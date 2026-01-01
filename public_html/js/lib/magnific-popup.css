@@ -1,0 +1,190 @@
+/* magnific-popup.css (VERSÃO MODIFICADA PARA CORREÇÃO DE IMAGENS FALTANTES) */
+
+/* Magnific Popup CSS */
+.mfp-bg {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1042;
+  overflow: hidden;
+  position: fixed;
+  background: #0b0b0b;
+  opacity: 0.8;
+}
+
+.mfp-wrap {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1043;
+  position: fixed;
+  outline: none !important;
+  -webkit-backface-visibility: hidden;
+}
+
+.mfp-container {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+.mfp-container:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.mfp-content {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 auto;
+  text-align: left;
+  z-index: 1045;
+}
+
+.mfp-iframe-holder .mfp-content,
+.mfp-image-holder .mfp-content {
+  max-width: 100%;
+}
+
+/* Base style for different content types */
+.mfp-close {
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-decoration: none;
+  text-align: center;
+  opacity: 0.65;
+  padding: 0 0 18px 10px;
+  color: #FFF;
+  font-size: 28px;
+  font-weight: bold;
+  font-style: normal;
+  font-family: Arial, Baskerville, monospace;
+  cursor: pointer;
+  z-index: 1046;
+  -webkit-backface-visibility: hidden;
+}
+
+/* CORREÇÃO DO BOTÃO DE FECHAR (Close Button) */
+.mfp-close:hover {
+  opacity: 1;
+}
+.mfp-close:after {
+    content: '\00D7'; /* Adiciona o caractere 'X' */
+    display: block;
+    line-height: 44px;
+}
+
+
+.mfp-figure {
+  margin: 0;
+}
+.mfp-figure:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 40px;
+  bottom: 40px;
+  display: block;
+  right: 0;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+.mfp-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  line-height: 0;
+}
+.mfp-image img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  display: block;
+  line-height: 0;
+  margin: 0 auto;
+}
+
+/* CORREÇÃO DAS SETAS DE NAVEGAÇÃO (Arrows) */
+.mfp-arrow {
+  opacity: 0.65;
+  position: absolute;
+  top: 50%;
+  margin: -55px 0 0 0;
+  padding: 0;
+  width: 90px;
+  height: 110px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 1044;
+}
+.mfp-arrow:before, .mfp-arrow:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+}
+
+/* Seta da Esquerda */
+.mfp-arrow-left {
+  left: 0;
+}
+.mfp-arrow-left:before {
+    left: 30px;
+    border-right-color: #CCC;
+}
+.mfp-arrow-left:after {
+    left: 38px;
+    border-right-color: #FFF;
+}
+.mfp-arrow-left:hover:before {
+    border-right-color: #FFF;
+}
+
+/* Seta da Direita */
+.mfp-arrow-right {
+  right: 0;
+}
+.mfp-arrow-right:before {
+    right: 30px;
+    border-left-color: #CCC;
+}
+.mfp-arrow-right:after {
+    right: 38px;
+    border-left-color: #FFF;
+}
+.mfp-arrow-right:hover:before {
+    border-left-color: #FFF;
+}
+
+/* Hide navigation arrows when only one item in gallery */
+.mfp-arrow:hover {
+  opacity: 1;
+}
+.mfp-container.mfp-s-ready .mfp-arrow {
+  /* No animation */
+}
+.mfp-container.mfp-arrow-hidden .mfp-arrow {
+  /* Hide arrows */
+  display: none;
+}
+/* ... (o resto do CSS do popup) */

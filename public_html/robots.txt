@@ -1,0 +1,16 @@
+# Arquivo robots.txt para ecmfotografia.com.br
+
+User-agent: *
+
+# pastas que NÃO devem ser indexadas
+Disallow: /admin/
+Disallow: /cliente/
+Disallow: /includes/
+
+# Arquivos de processamento que NÃO devem ser indexados
+Disallow: /processa-contato.php
+Disallow: /processa-login.php
+Disallow: /upload-handler.php
+
+# Localização do seu sitemap (mapa do site)
+Sitemap: https://ecmfotografia.com.br/sitemap.xml

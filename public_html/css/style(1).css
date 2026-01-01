@@ -1,0 +1,454 @@
+/* css/style.css (VERSÃO MESTRE COMPLETA E FINAL COM LOGIN MODERNO) */
+
+/* --- Variáveis de Tema (Raiz) --- */
+:root {
+    --cor-fundo: #FFFFFF; --cor-fundo-secundaria: #F8F8F8; --cor-texto: #333333;
+    --cor-destaque: #007BFF; --cor-borda: #E0E0E0;
+    --cor-sombra: rgba(0, 0, 0, 0.08); /* Sombra mais suave */
+}
+html {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+html.dark-mode {
+    --cor-fundo: #121212; --cor-fundo-secundaria: #1E1E1E; --cor-texto: #E0E0E0;
+    --cor-destaque: #00AFFF; --cor-borda: #333333;
+    --cor-sombra: rgba(0, 0, 0, 0.3); /* Sombra mais escura para o dark mode */
+}
+
+/* --- Estilos Globais (Reset) --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6; background-color: inherit; color: inherit;
+    transition: background-color 0.3s, color 0.3s;
+}
+img { max-width: 100%; height: auto; display: block; }
+main { display: block; }
+
+/* --- Estilos do Header --- */
+header {
+    background-color: var(--cor-fundo-secundaria); border-bottom: 1px solid var(--cor-borda);
+    padding: 15px 20px; max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center; position: relative;
+}
+header .logo-link {
+    font-size: 1.5rem; font-weight: bold; color: var(--cor-destaque); text-decoration: none;
+    z-index: 1001;
+}
+.logo-img { height: 40px; width: auto; display: block; }
+header nav ul { list-style: none; display: flex; align-items: center; }
+header nav li { margin-left: 20px; }
+header nav a {
+    text-decoration: none; color: var(--cor-texto);
+    font-weight: bold; transition: color 0.3s;
+}
+header nav a:hover { color: var(--cor-destaque); }
+.logo-escuro { display: none; }
+.logo-claro { display: block; }
+html.dark-mode .logo-claro { display: none; }
+html.dark-mode .logo-escuro { display: block; }
+
+/* --- Botão de Tema --- */
+#theme-toggle {
+    background: none; border: none; cursor: pointer; padding: 5px;
+    border-radius: 50%; color: var(--cor-texto); 
+    transition: background-color 0.3s, color 0.3s;
+    display: flex; align-items: center; justify-content: center;
+}
+#theme-toggle:hover { background-color: var(--cor-borda); }
+#theme-toggle svg { width: 20px; height: 20px; }
+.icon-moon { display: none; }
+.icon-sun { display: block; }
+html.dark-mode .icon-sun { display: none; }
+html.dark-mode .icon-moon { display: block; }
+
+/* --- Menu Hamburger --- */
+#menu-toggle {
+    background: none; border: none; cursor: pointer;
+    padding: 10px 5px; display: none; z-index: 1001;
+}
+.hamburger-linha {
+    display: block; width: 25px; height: 3px;
+    background-color: var(--cor-texto); margin: 5px 0;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+#menu-toggle.ativo .hamburger-linha:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+#menu-toggle.ativo .hamburger-linha:nth-child(2) { transform: scale(0); }
+#menu-toggle.ativo .hamburger-linha:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* --- Estilos do Footer --- */
+footer {
+    background-color: var(--cor-fundo-secundaria); border-top: 1px solid var(--cor-borda);
+    color: var(--cor-texto); text-align: center;
+    padding: 30px 20px; max-width: 1200px;
+    margin: 40px auto 0 auto;
+}
+
+/* --- Botões e CTAs Gerais --- */
+.cta-button {
+    display: inline-block; padding: 12px 28px; text-decoration: none;
+    border-radius: 5px; font-weight: bold; transition: all 0.3s ease;
+    border: 2px solid var(--cor-destaque);
+    background-color: var(--cor-destaque); color: #FFF;
+}
+.cta-button:hover { background-color: transparent; color: var(--cor-destaque); }
+.cta-button-secundario {
+    background-color: transparent; border-color: var(--cor-borda);
+    color: var(--cor-texto);
+}
+.cta-button-secundario:hover {
+    background-color: var(--cor-fundo-secundaria); border-color: var(--cor-fundo-secundaria);
+}
+.alerta {
+    padding: 15px; margin-bottom: 20px; border-radius: 5px;
+    font-weight: bold; border: 1px solid transparent;
+}
+.alerta.sucesso {
+    color: #155724; background-color: #d4edda; border-color: #c3e6cb;
+}
+.alerta.erro {
+    color: #721c24; background-color: #f8d7da; border-color: #f5c6cb;
+}
+
+/* --- ESTILOS DA PÁGINA HOME --- */
+.hero-section {
+    position: relative; 
+    height: 60vh; 
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #FFF;
+}
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.45); 
+    z-index: 1;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+}
+.hero-content h1 { color: #FFF; font-size: 3.5rem; margin-bottom: 10px; }
+.hero-content p { font-size: 1.2rem; margin-bottom: 30px; }
+
+/* TRABALHOS RECENTES (Mini-Portfólio) */
+.destaques-section {
+    padding: 60px 20px; max-width: 1200px; margin: 0 auto;
+    background-color: var(--cor-fundo-secundaria);
+}
+.destaques-section h2 {
+    text-align: center; font-size: 2rem;
+    margin-bottom: 20px; color: var(--cor-texto);
+}
+.galeria-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px; margin-bottom: 20px;
+}
+.galeria-grid .grid-item img {
+    width: 100%; height: 200px;
+    object-fit: cover; border-radius: 5px;
+}
+.cta-link {
+    display: block; text-align: center; text-decoration: none;
+    font-weight: bold; color: var(--cor-destaque);
+}
+.cta-section {
+    padding: 60px 20px; max-width: 1200px;
+    margin: 0 auto; text-align: center;
+}
+.cta-section h2 {
+    font-size: 2rem; margin-bottom: 20px; color: var(--cor-texto);
+}
+.cta-section p { max-width: 600px; margin: 0 auto 25px auto; }
+
+/* --- ESTILOS DE PÁGINAS GERAIS (Sobre, Contato) --- */
+.page-hero-section {
+    padding: 60px 20px;
+    background-color: var(--cor-fundo-secundaria);
+    text-align: center; border-bottom: 1px solid var(--cor-borda);
+}
+.page-hero-content h1 {
+    font-size: 2.5rem; color: var(--cor-destaque); margin-bottom: 10px;
+}
+.page-hero-content p { font-size: 1.1rem; color: var(--cor-texto); }
+
+/* --- ESTILOS DA PÁGINA SOBRE --- */
+.sobre-mim-section {
+    padding: 60px 20px; max-width: 1200px; margin: 0 auto;
+}
+.sobre-mim-grid {
+    display: grid; grid-template-columns: 1fr 2fr; 
+    gap: 40px; align-items: center;
+}
+.sobre-mim-imagem {
+    justify-self: center; max-width: 350px; width: 100%;
+}
+.sobre-mim-imagem img {
+    width: 100%; aspect-ratio: 1 / 1; object-fit: cover;   
+    border-radius: 50%; border: 5px solid var(--cor-borda);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.sobre-mim-texto h2 {
+    font-size: 2.2rem; color: var(--cor-destaque); text-align: left; margin-bottom: 10px;
+}
+.sobre-mim-texto .subtitulo {
+    font-size: 1.1rem; font-weight: bold; color: var(--cor-texto); margin-bottom: 20px;
+}
+.sobre-mim-texto p { margin-bottom: 15px; line-height: 1.7; }
+.sobre-mim-texto h3 {
+    font-size: 1.5rem; margin-top: 30px; margin-bottom: 15px;
+    color: var(--cor-texto); border-left: 3px solid var(--cor-destaque); padding-left: 10px;
+}
+.sobre-mim-texto ul { list-style: none; padding-left: 0; margin-bottom: 30px; }
+.sobre-mim-texto li { padding-left: 20px; position: relative; margin-bottom: 10px; }
+.sobre-mim-texto li::before {
+    content: '✔'; color: var(--cor-destaque); position: absolute; left: 0; top: 0;
+}
+
+/* --- ESTILOS DO PORTFÓLIO --- */
+.portfolio-section {
+    padding: 60px 20px; max-width: 1200px; margin: 0 auto;
+}
+.portfolio-filtros {
+    display: flex; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;
+}
+.filtro-btn {
+    background: none; border: 2px solid var(--cor-borda); color: var(--cor-texto);
+    padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;
+    font-size: 1rem; font-weight: bold; transition: all 0.3s ease;
+}
+.filtro-btn:hover {
+    background-color: var(--cor-fundo-secundaria); border-color: var(--cor-fundo-secundaria);
+}
+.filtro-btn.ativo {
+    background-color: var(--cor-destaque); border-color: var(--cor-destaque); color: #FFF;
+}
+.portfolio-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+.portfolio-item {
+    position: relative; display: block; overflow: hidden;
+    border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+.portfolio-item img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.4s ease;
+}
+.portfolio-item .item-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.4s ease;
+}
+.portfolio-item .item-overlay p {
+    color: #FFF; font-size: 1.2rem; font-weight: bold;
+    transform: translateY(10px); transition: transform 0.4s ease;
+}
+.portfolio-item:hover img { transform: scale(1.1); }
+.portfolio-item:hover .item-overlay { opacity: 1; }
+.portfolio-item:hover .item-overlay p { transform: translateY(0); }
+
+
+/* --- ESTILOS DE CONTATO --- */
+.contato-section {
+    padding: 60px 20px; max-width: 1200px; margin: 0 auto;
+}
+.contato-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+}
+.contato-info h2 {
+    font-size: 2rem; color: var(--cor-destaque); text-align: left; margin-bottom: 20px;
+}
+.contato-info p { margin-bottom: 25px; line-height: 1.7; }
+.contato-info ul { list-style: none; padding: 0; }
+.contato-info li { margin-bottom: 15px; font-size: 1.1rem; }
+.contato-info li strong { color: var(--cor-texto); display: block; }
+.contato-info li a { color: var(--cor-destaque); text-decoration: none; }
+.contato-form h2 {
+    font-size: 2rem; color: var(--cor-destaque); text-align: left; margin-bottom: 20px;
+}
+
+/* --- FORMULÁRIOS GERAIS (INCLUI LOGIN) --- */
+.form-group { margin-bottom: 20px; }
+.form-group label {
+    display: block; font-weight: bold; margin-bottom: 8px; /* Mais espaço */
+    color: var(--cor-texto);
+    font-size: 0.95rem; /* Texto da label um pouco menor */
+}
+.form-group input, 
+.form-group textarea,
+.form-group .input { 
+    width: 100%; padding: 12px; border: 1px solid var(--cor-borda);
+    border-radius: 5px; background-color: var(--cor-fundo-secundaria);
+    color: var(--cor-texto); font-size: 1rem;
+    box-sizing: border-box; 
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-group input:focus, 
+.form-group textarea:focus,
+.form-group .input:focus {
+    outline: none; border-color: var(--cor-destaque); 
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.25); /* Sombra mais visível no foco */
+}
+.form-group textarea { resize: vertical; }
+
+/* --- ESTILOS DA PÁGINA DE LOGIN (CORREÇÃO FINAL) --- */
+.login-section {
+    min-height: calc(100vh - 100px); /* Garante que o formulário fique centralizado verticalmente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px; /* Padding para telas menores */
+    background-color: var(--cor-fundo);
+}
+.login-container {
+    max-width: 420px; /* Largura ideal para o formulário */
+    width: 100%;
+    padding: 35px; /* Mais padding interno */
+    background-color: var(--cor-fundo-secundaria);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px; /* Cantos mais arredondados */
+    box-shadow: 0 8px 25px var(--cor-sombra); /* Sombra mais proeminente */
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.login-container h2 {
+    text-align: center;
+    color: var(--cor-destaque); /* Usa a cor de destaque para o título */
+    font-size: 2.2rem; /* Título maior */
+    margin-bottom: 30px; /* Mais espaço após o título */
+    font-weight: 600; /* Um pouco mais encorpado */
+}
+.login-container .cta-button {
+    width: 100%; 
+    padding: 15px;
+    font-size: 1.1rem;
+    margin-top: 10px; /* Espaço para o botão */
+    background-color: var(--cor-destaque); /* Garante que use a cor de destaque */
+    border-color: var(--cor-destaque);
+}
+.login-container .cta-button:hover {
+    background-color: transparent;
+    color: var(--cor-destaque);
+}
+
+
+/**********************************************
+ * RESPONSIVIDADE (MEDIA QUERY)
+ **********************************************/
+@media (max-width: 800px) {
+    /* Header */
+    #menu-toggle { display: block; }
+    #nav-menu {
+        display: none; position: fixed; 
+        top: 0; left: 0; width: 100vw; height: 100vh; 
+        background-color: var(--cor-fundo); 
+        z-index: 1000; 
+        align-items: center; justify-content: center;
+    }
+    #nav-menu.menu-aberto { display: flex; }
+    header nav ul { flex-direction: column; align-items: center; }
+    header nav li { margin: 20px 0; margin-left: 0; }
+    header nav a { font-size: 1.5rem; }
+    
+    /* Home */
+    .hero-content h1 { font-size: 2rem; }
+    .hero-content p { font-size: 1rem; }
+    .galeria-grid { grid-template-columns: 1fr; }
+    .destaques-section h2, .cta-section h2 { font-size: 1.5rem; }
+    .destaques-section, .cta-section { padding: 40px 15px; }
+    
+    /* Sobre */
+    .page-hero-content h1 { font-size: 2rem; }
+    .sobre-mim-grid { grid-template-columns: 1fr; gap: 30px; }
+    .sobre-mim-texto h2 { text-align: center; }
+    .sobre-mim-texto .subtitulo { text-align: center; }
+
+    /* Portfólio */
+    .portfolio-section { padding: 40px 15px; }
+    .filtro-btn { padding: 8px 15px; font-size: 0.9rem; }
+    .portfolio-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+    /* Contato/Login */
+    .contato-grid { grid-template-columns: 1fr; gap: 50px; }
+    .contato-info h2, .contato-form h2 { text-align: center; }
+    .login-container { padding: 25px; } /* Ajusta padding em telas menores */
+}
+/* (Adicione no final de css/style.css) */
+
+/* --- CORREÇÃO DO SELETOR DE TEMA NO MOBILE --- */
+@media (max-width: 800px) {
+    
+    /* 1. Faz o item de tema aparecer na lista vertical */
+    header nav ul li.tema-toggle-item {
+        margin-top: 25px; /* Espaçamento extra para separar dos links */
+        margin-left: 0;
+    }
+    
+    /* 2. Estiliza o botão para ficar maior e mais fácil de tocar */
+    #theme-toggle {
+        padding: 10px 15px;
+        border: 1px solid var(--cor-borda);
+    }
+}
+
+/* 3. Garante que no DESKTOP, o item não tenha a margem extra do mobile */
+@media (min-width: 801px) {
+    header nav ul li.tema-toggle-item {
+        margin-left: 20px; /* Volta a ter margem normal */
+        margin-top: 0;
+    }
+    /* Reverte o estilo do botão para o tamanho padrão de desktop */
+    #theme-toggle {
+        padding: 5px; 
+        border: none;
+    }
+}
+/* (Adicione no final de css/style.css) */
+
+/* --- Estilos da Página de Conteúdo Genérico (Ajuda) --- */
+.conteudo-pagina-section {
+    padding: 60px 20px;
+    max-width: 900px; /* Largura boa para leitura */
+    margin: 0 auto;
+}
+.conteudo-wrapper {
+    background-color: var(--cor-fundo-secundaria);
+    border: 1px solid var(--cor-borda);
+    padding: 30px;
+    border-radius: 5px;
+}
+/* Estiliza o conteúdo que vem do TinyMCE */
+.conteudo-wrapper h1,
+.conteudo-wrapper h2,
+.conteudo-wrapper h3 {
+    color: var(--cor-destaque);
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+.conteudo-wrapper p {
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+.conteudo-wrapper ul,
+.conteudo-wrapper ol {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+.conteudo-wrapper img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 15px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}

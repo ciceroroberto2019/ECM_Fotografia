@@ -1,0 +1,14 @@
+# Ligar o motor de reescrita de URL
+RewriteEngine On
+
+# Define a base do seu site (ajuste se estiver em uma subpasta)
+RewriteBase /
+
+# Se o que foi pedido NÃO for um arquivo existente (como style.css ou logo.png)
+RewriteCond %{REQUEST_FILENAME} !-f
+# E se o que foi pedido NÃO for um diretório existente
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Re-escreva (redirecione internamente) TUDO para o index.php,
+# passando a URL pedida como um parâmetro "url"
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
